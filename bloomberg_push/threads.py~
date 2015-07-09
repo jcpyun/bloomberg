@@ -1,0 +1,44 @@
+from threading import Thread
+import urllib
+import re
+
+def th(ur):
+    base = "http://finance.yahoo.com/q?s="+ur
+    regex = "<head>.+?</head"
+    pattern = re.compile(regex)
+    htmltext= urllib.urlopen(base).read()
+#    print htmltext[0:100]
+    results = re.findall(pattern,htmltext)
+    print results   
+
+symbolslist=open("allSymbolsHorizontal.txt").read()
+symbolslist=symbolslist.replace(" ","").split(",")
+
+print symbolslist
+
+
+threadlist = []
+
+for u in symbolslist:
+    t = Thread(target = th,args=(u,))
+    t.start()
+    threadlist.append(t)
+
+for b in threadlist:
+    b.join()
+
+
+
+"""
+urls = "".split()
+
+threadlist = []
+
+for u in urls:
+    t = Thread(target = th,args=(u,))
+    t.start()
+    threadlist.append(t)
+
+for b in threadlist:
+    b.join()
+"""

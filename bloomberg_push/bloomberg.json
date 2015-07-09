@@ -1,0 +1,14 @@
+{
+    "securities": [
+    "IBM US Equity",
+    "AAPL US Equity",
+    "GOOG US Equity",
+    "MSFT US Equity"
+    ],
+    "fields": [
+    "Q1928", // Twitter RT
+    "NW033", // Twitter
+    "RQ685", // News Sentiment RT
+    "NW011" // News Sentiment
+    ]
+}
